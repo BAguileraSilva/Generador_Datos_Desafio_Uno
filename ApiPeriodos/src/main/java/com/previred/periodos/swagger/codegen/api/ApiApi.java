@@ -46,17 +46,17 @@ public interface ApiApi {
         return getRequest().map(r -> r.getHeader("Accept"));
     }
 
-    @ApiOperation(value = "Lista de periodos a procesar", nickname = "periodos", notes = "", response = Periodo.class, responseContainer = "List", tags={ "periodos", })
+    @ApiOperation(value = "Lista de periodos a procesar", nickname = "periodos", notes = "", response = Periodo.class, tags={ "periodos", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Lista de periodos", response = Periodo.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "Periodo y lista de fechas", response = Periodo.class) })
     @RequestMapping(value = "/api",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<Periodo>> periodos() {
+    default ResponseEntity<Periodo> periodos() {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("[ {  \"fechaCreacion\" : \"2000-01-23\",  \"fechas\" : [ \"2000-01-23\", \"2000-01-23\" ],  \"id\" : 0,  \"fechaFin\" : \"2000-01-23\"}, {  \"fechaCreacion\" : \"2000-01-23\",  \"fechas\" : [ \"2000-01-23\", \"2000-01-23\" ],  \"id\" : 0,  \"fechaFin\" : \"2000-01-23\"} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"fechaCreacion\" : \"2000-01-23\",  \"fechas\" : [ \"2000-01-23\", \"2000-01-23\" ],  \"id\" : 0,  \"fechaFin\" : \"2000-01-23\"}", Periodo.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

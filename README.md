@@ -1,12 +1,14 @@
 # Generador Datos Desafio
 
 Este proyecto expone un API REST que entrega la siguiente información:
+
+*id*: identificador
 *fechaCreacion*: Fecha de inicio de la secuencia
 *fechaFin*: Fecha de fin de la secuencia
 *fechas*: Lista de fechas que están en el rango de la fecha que se encuentra en “fechaCreacion” hasta la fecha “fechaFin”
 Ejemplo.
 ```json
-[{
+{
     "id": 6,
     "fechaCreacion": "1968-08-01",
     "fechaFin": "1971-06-01",
@@ -15,11 +17,11 @@ Ejemplo.
       "1969-05-01",
       "1969-09-01",
       "1971-05-01"]
-}]
+}
 ```
 *Nota*:
 El formato de las fechas es yyyy-MM-dd
-El servicio entrega 100 periodos, cada periodo contiene una fecha inicial una fecha final y una lista fechas.
+El servicio entrega 1 periodos, el periodo contiene una fecha inicial una fecha final y una lista fechas.
 
 # Detalle de los sistemas
 
@@ -71,9 +73,7 @@ wget http://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-co
 Para re-crear el código a partir de la definición del *YAML* de swagger ejecutar el siguiente comando
 
 ```bash
-java -jar .\swagger-codegen-cli.jar gen
-erate -i .\swagger\periodos.yaml -l spring -c .\swagger\config.json -o ApiPeriodos --ignore
--file-override .\.swagger-codegen-ignore
+java -jar .\swagger-codegen-cli.jar generate -i .\swagger\periodos.yaml -l spring -c .\swagger\config.json -o ApiPeriodos --ignore-file-override .\.swagger-codegen-ignore
 ```
 
 *Nota*:

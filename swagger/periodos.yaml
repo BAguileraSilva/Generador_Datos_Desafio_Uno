@@ -28,11 +28,9 @@ paths:
         - application/json
       responses:
         '200':
-          description: Lista de periodos
+          description: Periodo y lista de fechas
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/Periodo'
+            $ref: '#/definitions/Periodo'
 definitions:
   Periodo:
     type: object

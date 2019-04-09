@@ -38,12 +38,12 @@ public class ApiApiController implements ApiApi {
     }
 
     @Override
-    public ResponseEntity<List<Periodo>> periodos() {
+    public ResponseEntity<Periodo> periodos() {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    List<Periodo> detalle = periodosService.getPeriodos();
-                    ResponseEntity<List<Periodo>> respuesta = new ResponseEntity<>(detalle, HttpStatus.OK);
+                    Periodo detalle = periodosService.getPeriodos();
+                    ResponseEntity<Periodo> respuesta = new ResponseEntity<>(detalle, HttpStatus.OK);
                     return respuesta;
                 } catch (Exception e) {
                     log.error("Couldn't serialize response for content type application/xml", e);
