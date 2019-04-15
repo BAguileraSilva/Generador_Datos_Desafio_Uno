@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: previred
+Implementation-Version: 1.0
+Built-By: aguil
+Implementation-Vendor-Id: com.periodos
+Build-Jdk: 1.8.0_181
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/previred
+Created-By: Maven Integration for Eclipse
+
